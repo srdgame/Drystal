@@ -1,12 +1,12 @@
 [submodule "external/lua"]
 	path = external/lua
-	url = https://github.com/kidanger/lua-5.3.git
+	url = https://github.com/srdgame/lua-5.3.git
 [submodule "external/lua-cjson"]
 	path = external/lua-cjson
-	url = https://github.com/mpx/lua-cjson.git
+	url = https://github.com/srdgame/lua-cjson.git
 [submodule "external/box2d"]
 	path = external/box2d
-	url = https://github.com/ansman/box2d.git
+	url = https://github.com/erincatto/Box2D.git
 [submodule "external/libpng"]
 	path = external/libpng
 	url = https://github.com/glennrp/libpng.git

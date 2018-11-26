@@ -69,10 +69,10 @@ int mlua_sizeof_font(lua_State* L)
 
 	Font* font = pop_font(L, 1);
 	const char* text = luaL_checkstring(L, 2);
-	lua_Number w, h;
+	float w, h;
 	font_get_textsize(font, text, &w, &h, -1);
-	lua_pushnumber(L, w);
-	lua_pushnumber(L, h);
+	lua_pushnumber(L, (lua_Number)w);
+	lua_pushnumber(L, (lua_Number)h);
 	return 2;
 }
 
@@ -82,10 +82,10 @@ int mlua_sizeof_plain_font(lua_State* L)
 
 	Font* font = pop_font(L, 1);
 	const char* text = luaL_checkstring(L, 2);
-	lua_Number w, h;
+	float w, h;
 	font_get_textsize_plain(font, text, &w, &h);
-	lua_pushnumber(L, w);
-	lua_pushnumber(L, h);
+	lua_pushnumber(L, (lua_Number)w);
+	lua_pushnumber(L, (lua_Number)h);
 	return 2;
 }
 

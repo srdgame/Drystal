@@ -29,8 +29,8 @@ int mlua_get_center_position_body(lua_State* L)
 {
 	b2Body* body = pop_body_secure(L, 1)->body;
 	b2Vec2 pos = body->GetWorldCenter();
-	lua_pushnumber(L, pos.x * pixels_per_meter);
-	lua_pushnumber(L, pos.y * pixels_per_meter);
+	lua_pushnumber(L, (lua_Number)pos.x * pixels_per_meter);
+	lua_pushnumber(L, (lua_Number)pos.y * pixels_per_meter);
 	return 2;
 }
 
@@ -48,8 +48,8 @@ int mlua_get_center_position_body(lua_State* L)
 	{ \
 		b2Body* body = pop_body_secure(L, 1)->body; \
 		const b2Vec2 vector = get_expr; \
-		lua_pushnumber(L, vector.x * pixels_per_meter); \
-		lua_pushnumber(L, vector.y * pixels_per_meter); \
+		lua_pushnumber(L, (lua_Number)vector.x * pixels_per_meter); \
+		lua_pushnumber(L, (lua_Number)vector.y * pixels_per_meter); \
 		return 2; \
 	}
 

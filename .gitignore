@@ -8,3 +8,7 @@ build-*/
 .rocks
 .storage
 
+*~
+*.un~
+*.swp
+tags

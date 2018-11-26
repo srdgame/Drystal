@@ -18,7 +18,7 @@
 
 struct lua_State;
 
-extern float pixels_per_meter;
+extern double pixels_per_meter;
 
 int mlua_init_physics(lua_State* L);
 int mlua_set_gravity(lua_State* L);

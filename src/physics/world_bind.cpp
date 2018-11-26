@@ -74,9 +74,9 @@ class CustomDestructionListener : public b2DestructionListener
 };
 
 static b2World* world;
-static float time_accumulator = 0.;
+static double time_accumulator = 0.;
 static CustomDestructionListener destructionListener;
-float pixels_per_meter = 1;
+double pixels_per_meter = 1;
 static Body* destroyed_bodies;
 static Joint* destroyed_joints;
 
@@ -234,10 +234,10 @@ void CustomListener::BeginContact(b2Contact* contact)
 
 	pushBodies(contact);
 
-	lua_pushnumber(L, manifold.points[0].x * pixels_per_meter);
-	lua_pushnumber(L, manifold.points[0].y * pixels_per_meter);
-	lua_pushnumber(L, manifold.normal.x);
-	lua_pushnumber(L, manifold.normal.y);
+	lua_pushnumber(L, (lua_Number)manifold.points[0].x * pixels_per_meter);
+	lua_pushnumber(L, (lua_Number)manifold.points[0].y * pixels_per_meter);
+	lua_pushnumber(L, (lua_Number)manifold.normal.x);
+	lua_pushnumber(L, (lua_Number)manifold.normal.y);
 
 	call_lua_function(L, 6, 0);
 }
@@ -263,10 +263,10 @@ void CustomListener::PreSolve(b2Contact* contact, const b2Manifold*)
 	lua_rawgeti(L, LUA_REGISTRYINDEX, presolve);
 	pushBodies(contact);
 
-	lua_pushnumber(L, manifold.points[0].x * pixels_per_meter);
-	lua_pushnumber(L, manifold.points[0].y * pixels_per_meter);
-	lua_pushnumber(L, manifold.normal.x);
-	lua_pushnumber(L, manifold.normal.y);
+	lua_pushnumber(L, (lua_Number)manifold.points[0].x * pixels_per_meter);
+	lua_pushnumber(L, (lua_Number)manifold.points[0].y * pixels_per_meter);
+	lua_pushnumber(L, (lua_Number)manifold.normal.x);
+	lua_pushnumber(L, (lua_Number)manifold.normal.y);
 
 	call_lua_function(L, 6, 1);
 	bool enabled = lua_toboolean(L, -1);
@@ -341,8 +341,8 @@ public:
 			Body *body = (Body *) fixture->GetBody()->GetUserData();
 			push_body(L, body);
 			lua_pushnumber(L, fraction);
-			lua_pushnumber(L, point.x * pixels_per_meter);
-			lua_pushnumber(L, point.y * pixels_per_meter);
+			lua_pushnumber(L, (lua_Number)point.x * pixels_per_meter);
+			lua_pushnumber(L, (lua_Number)point.y * pixels_per_meter);
 			call_lua_function(L, 4, 2);
 			new_fraction = luaL_checknumber(L, -2);
 			save_data = lua_toboolean(L, -1);
@@ -382,8 +382,8 @@ int mlua_raycast(lua_State* L)
 	if (callback.fixture) {
 		Body *body = (Body *) callback.fixture->GetBody()->GetUserData();
 		push_body(L, body);
-		lua_pushnumber(L, callback.point.x * pixels_per_meter);
-		lua_pushnumber(L, callback.point.y * pixels_per_meter);
+		lua_pushnumber(L, (lua_Number)callback.point.x * pixels_per_meter);
+		lua_pushnumber(L, (lua_Number)callback.point.y * pixels_per_meter);
 		return 3;
 	} else {
 		return 0;

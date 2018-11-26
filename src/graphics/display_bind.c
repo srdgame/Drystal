@@ -266,14 +266,14 @@ int mlua_get_pixel_surface(lua_State* L)
 	assert_lua_error(L, x <= surface->w, "get_pixel: x must be equal or less than texture's width");
 	assert_lua_error(L, y <= surface->h, "get_pixel: y must be equal or less than texture's height");
 
-	lua_Integer r, g, b;
-	lua_Integer a;
+	int r, g, b;
+	int a;
 	display_get_pixel(surface, x - 1, y - 1, &r, &g, &b, &a);
 
-	lua_pushinteger(L, r);
-	lua_pushinteger(L, g);
-	lua_pushinteger(L, b);
-	lua_pushinteger(L, a);
+	lua_pushinteger(L, (lua_Integer)r);
+	lua_pushinteger(L, (lua_Integer)g);
+	lua_pushinteger(L, (lua_Integer)b);
+	lua_pushinteger(L, (lua_Integer)a);
 	return 4;
 }
 
