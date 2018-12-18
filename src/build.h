@@ -64,6 +64,12 @@
 #define _UTILS_FEATURE_ "-UTILS"
 #endif
 
+#ifdef BUILD_LFS
+#define _LFS_FEATURE_ "+LFS"
+#else
+#define _LFS_FEATURE_ "-LFS"
+#endif
+
 #ifdef BUILD_WEB
 #define _WEB_FEATURE_ "+WEB"
 #else
@@ -79,4 +85,5 @@
 	_PARTICLE_FEATURE_ " " \
 	_STORAGE_FEATURE_ " " \
 	_UTILS_FEATURE_ " " \
+	_LFS_FEATURE_ " " \
 	_WEB_FEATURE_ " "

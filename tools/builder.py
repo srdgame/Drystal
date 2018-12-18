@@ -11,6 +11,7 @@ import random
 prefix = 'BUILD_'
 configs = {
 'UTILS': [],
+'LFS': [],
 'GRAPHICS': [],
 'STORAGE': ['UTILS'],
 'AUDIO': [],
@@ -19,7 +20,7 @@ configs = {
 'PARTICLE': ['GRAPHICS'],
 'PHYSICS': [],
 }
-configs_names = ['UTILS', 'GRAPHICS', 'STORAGE', 'AUDIO', 'FONT', 'WEB', 'PARTICLE', 'PHYSICS']
+configs_names = ['UTILS', 'LFS', 'GRAPHICS', 'STORAGE', 'AUDIO', 'FONT', 'WEB', 'PARTICLE', 'PHYSICS']
 
 def get_index_of(v):
     for i, c in enumerate(configs_names):

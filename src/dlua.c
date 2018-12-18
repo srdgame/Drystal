@@ -54,6 +54,9 @@
 #ifdef BUILD_UTILS
 #include "utils/api.h"
 #endif
+#ifdef BUILD_LFS
+#include "lfs/api.h"
+#endif
 #ifdef BUILD_LIVECODING
 #include "livecoding.h"
 #ifdef BUILD_GRAPHICS
@@ -175,6 +178,9 @@ static void register_modules(void)
 #ifdef BUILD_UTILS
 	REGISTER_MODULE(utils, dlua.L);
 #endif
+#ifdef BUILD_LFS
+	REGISTER_MODULE(lfs, dlua.L);
+#endif
 }
 
 bool dlua_load_code(void)
@@ -212,6 +218,7 @@ bool dlua_load_code(void)
 
 	call_lua_function(L, 0, 0);
 
+	fprintf(stderr, "gettop: %d\n", lua_gettop(L));
 	assert(lua_gettop(L) == 0);
 	return true;
 }

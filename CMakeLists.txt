@@ -17,6 +17,7 @@ option(BUILD_WEB             "Enable web module" ON)
 option(BUILD_AUDIO           "Enable audio module" ON)
 option(BUILD_GRAPHICS        "Enable graphics module" ON)
 option(BUILD_UTILS           "Enable utils module" ON)
+option(BUILD_LFS             "Enable lfs module" ON)
 
 cmake_dependent_option(BUILD_PARTICLE     "Enable particle module (needs BUILD_GRAPHICS as dependency)" ON "BUILD_GRAPHICS" OFF)
 cmake_dependent_option(BUILD_STORAGE      "Enable storage module (needs BUILD_UTILS as dependency)" ON "BUILD_UTILS" OFF)
